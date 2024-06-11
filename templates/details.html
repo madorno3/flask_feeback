@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details</title>
+</head>
+<body>
+    <h1>
+        Hi {{user.username}}!
+    </h1>
+    <form action="/users/{{user.username}}/delete" method="post">
+        <button>Delete Account</button>
+    </form>
+    <p>first name: {{user.first_name}}</p>
+    <p>last name: {{user.last_name}}</p>
+    <p>e-mail: {{user.email}}</p>
+    <h3>Posts</h3>
+    <form action="/users/{{user.username}}/feedback/add" method="post">
+        <button>Make New Post</button>
+    </form>
+
+
+    {% for feedback in feedback %}
+        
+        <p style="font-weight: bold;"><a href="/feedback/{{feedback.id}}/update">{{feedback.title }}</a></p> <!-- Assuming each feedback item has a 'content' attribute -->
+        
+    {% endfor %}
+
+
+    
+</body>
+</html>
