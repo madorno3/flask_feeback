@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+</head>
+<body>
+    <h1>hi</h1>
+    <h1>{{feedback.title}}</h1>
+    <p>{{feedback.content}}</p>
+
+    <form action="/users/{{user.username}}/feedback/add" method="POST">
+
+        {{ form.hidden_tag() }}
+      
+        {% for field in form
+        if field.widget.input_type != 'hidden' %}
+        <p>
+          {{ field.label }}
+          {{ field }}
+      
+          {% endfor %}
+        </p>
+        {% endfor %}
+      
+        <button type="submit">Post</button>
+      
+      </form>
+    
+</body>
+</html>
